@@ -14,6 +14,7 @@
 		69250A1E271DF72F00B76DA1 /* ProjetoFinalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69250A1D271DF72F00B76DA1 /* ProjetoFinalTests.swift */; };
 		69250A28271DF72F00B76DA1 /* ProjetoFinalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69250A27271DF72F00B76DA1 /* ProjetoFinalUITests.swift */; };
 		69250A2A271DF72F00B76DA1 /* ProjetoFinalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69250A29271DF72F00B76DA1 /* ProjetoFinalUITestsLaunchTests.swift */; };
+		69B9D793271E4B5F00647B51 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B9D792271E4B5F00647B51 /* Colors.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +46,7 @@
 		69250A23271DF72F00B76DA1 /* ProjetoFinalUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProjetoFinalUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		69250A27271DF72F00B76DA1 /* ProjetoFinalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetoFinalUITests.swift; sourceTree = "<group>"; };
 		69250A29271DF72F00B76DA1 /* ProjetoFinalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetoFinalUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		69B9D792271E4B5F00647B51 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 			children = (
 				69250A06271DF72B00B76DA1 /* AppDelegate.swift */,
 				69250A0A271DF72B00B76DA1 /* ViewController.swift */,
+				69B9D792271E4B5F00647B51 /* Colors.swift */,
 				69250A0F271DF72F00B76DA1 /* Assets.xcassets */,
 				69250A11271DF72F00B76DA1 /* LaunchScreen.storyboard */,
 				69250A14271DF72F00B76DA1 /* Info.plist */,
@@ -253,6 +256,7 @@
 			files = (
 				69250A0B271DF72B00B76DA1 /* ViewController.swift in Sources */,
 				69250A07271DF72B00B76DA1 /* AppDelegate.swift in Sources */,
+				69B9D793271E4B5F00647B51 /* Colors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
