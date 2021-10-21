@@ -21,11 +21,10 @@
                     <rect key="frame" x="20" y="347.66666666666669" width="335" height="117"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WO8-LF-7zH">
-                    <rect key="frame" x="63.666666666666657" y="681" width="247.99999999999997" height="37"/>
+                    <rect key="frame" x="79.000000000000014" y="678" width="217.33333333333337" height="40"/>
                     <color key="backgroundColor" red="0.12941176470588234" green="0.45490196078431372" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="37" id="nQF-qm-Cuc"/>
-                        <constraint firstAttribute="width" constant="248" id="zJC-dd-gjE"/>
+                        <constraint firstAttribute="height" constant="40" id="nQF-qm-Cuc"/>
                     </constraints>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
