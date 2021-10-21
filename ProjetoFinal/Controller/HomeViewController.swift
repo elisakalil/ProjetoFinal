@@ -1,29 +1,76 @@
-//
+
 //  HomeViewController.swift
 //  ProjetoFinal
-//
 //  Created by Elisa Kalil on 21/10/21.
-//
 
 import UIKit
 
 class HomeViewController: UIViewController {
 
+    lazy var listPokemonCollectionView: UICollectionView = {
+        
+        let layout = UICollectionViewFlowLayout()
+        let heightCell:CGFloat = (self.view.frame.width/2.0-40)
+        layout.itemSize = CGSize(width: heightCell, height: heightCell)
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+        layout.scrollDirection = .vertical
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        collectionView.backgroundColor = .clear
+        
+        return collectionView
+        
+    }()
+    
+    fileprivate func createConstrains() {
+        
+        NSLayoutConstraint.activate([
+        
+            listPokemonCollectionView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 20),
+            listPokemonCollectionView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor, constant: -20),
+            listPokemonCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            listPokemonCollectionView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.84),
+
+        ])
+    }
+    
     override func viewDidLoad() {
+        
         super.viewDidLoad()
+        self.view.addSubview(listPokemonCollectionView)
+        createConstrains()
+        let nib = UINib(nibName: PokemonCollectionViewCell.id, bundle: nil)
+        
+        listPokemonCollectionView.register(nib, forCellWithReuseIdentifier: PokemonCollectionViewCell.id)
 
-        // Do any additional setup after loading the view.
     }
 
+    
+}
 
-    /*
-    // MARK: - Navigation
+extension HomeViewController: UICollectionViewDelegate {
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    
+}
+
+extension HomeViewController: UICollectionViewDataSource {
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 20
     }
-    */
-
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCollectionViewCell.id, for: indexPath) as! PokemonCollectionViewCell
+        
+        cell.labelPokemon.text = "Pikachu"
+        
+        return cell
+    }
+    
+    
 }
