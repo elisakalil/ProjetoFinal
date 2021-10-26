@@ -4,11 +4,13 @@
 //  Created by Elisa Kalil on 21/10/21.
 
 import UIKit
+import Kingfisher
 
 class HomeViewController: UIViewController {
 
     let api = API()
-    var listPokemon: ListPokemon?
+    var listPokemon =  Pokemons(poks: [])
+    var pokemon: Pokemon?
     
     lazy var listPokemonCollectionView: UICollectionView = {
         
@@ -53,15 +55,34 @@ class HomeViewController: UIViewController {
 
         let url = api.setListPokemonURL()
         api.getListPokemons(urlString: url, method: .GET) { pokemonReturn in
-            self.listPokemon = pokemonReturn
+            
             DispatchQueue.main.async {
-                guard let list = self.listPokemon else { return }
-                print("Quantidade de pokemons \(list.results.count)")
+                self.listPokemon = pokemonReturn // importante
+                
+//                guard let list = self.listPokemon else { return }
+//                print("Quantidade de pokemons \(list.poks?.count)")
+                
+                // array
+                // -> nome = list.results.name
+                // -> imagem url -> list.results.url -> pokemon.sprites.front_default
+                
                 self.listPokemonCollectionView.reloadData()
             }
         } errorReturned: { error in
             print("\(error)")
         }
+        
+       // tentativa de chamar a imagem via url do pokemon
+//            if let url = listPokemon?.results[1].url {
+//                api.getPokemons(urlString: url, method: .GET) { returned in
+//                    self.pokemon = returned
+//                    DispatchQueue.main.async {
+//                        print(self.pokemon)
+//                    }
+//                } errorReturned: { error in
+//                    print("Erro de retorno do pokemon")
+//                }
+//            }
     }
 }
 
@@ -73,22 +94,34 @@ extension HomeViewController: UICollectionViewDelegate {
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let list = self.listPokemon {
-            return list.results.count
-        }else {
-            return 0
+        if let poks = self.listPokemon.poks {
+            return poks.count
         }
+        return 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let pokemon = listPokemon!.results[indexPath.row]
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCollectionViewCell.id, for: indexPath) as! PokemonCollectionViewCell
         
-        cell.labelPokemon.text = pokemon.name?.capitalized
-        print(pokemon)
-        return cell
+        return self.displayPokemon(collectionView: collectionView, indexPath: indexPath)
     }
     
+    func displayPokemon(collectionView: UICollectionView, indexPath: IndexPath) -> PokemonCollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCollectionViewCell.id, for: indexPath) as! PokemonCollectionViewCell
+        guard let poks = self.listPokemon.poks else { return cell }
+        
+        if let pok = poks[indexPath.row] as? Pokemon {
+            cell.labelPokemon.text = pok.name ?? "Pokemon sem nome"
+            if let imageURL = pok.sprites?.front_default {
+                if let url = URL(string: imageURL) {
+                    cell.imagePokemon.kf.setImage(with: url,
+                                              options: [.cacheOriginalImage],
+                                              completionHandler: { result in })
+                }
+            }
+        }
+        return cell
+    }
     
 }
 

@@ -23,4 +23,6 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     func setupUI (){
         viewCellPokemon.layer.cornerRadius = 12
     }
+    
+    
 }
