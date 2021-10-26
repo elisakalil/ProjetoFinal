@@ -7,6 +7,9 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    let api = API()
+    var listPokemon: ListPokemon?
+    
     lazy var listPokemonCollectionView: UICollectionView = {
         
         let layout = UICollectionViewFlowLayout()
@@ -48,7 +51,17 @@ class HomeViewController: UIViewController {
         
         listPokemonCollectionView.register(nib, forCellWithReuseIdentifier: PokemonCollectionViewCell.id)
 
-        
+        let url = api.setListPokemonURL()
+        api.getListPokemons(urlString: url, method: .GET) { pokemonReturn in
+            self.listPokemon = pokemonReturn
+            DispatchQueue.main.async {
+                print("Quantidade de pokemons \(self.listPokemon!.results?.count)")
+                self.listPokemonCollectionView.reloadData()
+            }
+        } errorReturned: { error in
+            print("\(error)")
+        }
+
     }
 
     
