@@ -57,37 +57,24 @@ class HomeViewController: UIViewController {
         api.getListPokemons(urlString: url, method: .GET) { pokemonReturn in
             
             DispatchQueue.main.async {
-                self.listPokemon = pokemonReturn // importante
-                
-//                guard let list = self.listPokemon else { return }
-//                print("Quantidade de pokemons \(list.poks?.count)")
-                
-                // array
-                // -> nome = list.results.name
-                // -> imagem url -> list.results.url -> pokemon.sprites.front_default
-                
+                self.listPokemon = pokemonReturn
                 self.listPokemonCollectionView.reloadData()
             }
         } errorReturned: { error in
             print("\(error)")
         }
         
-       // tentativa de chamar a imagem via url do pokemon
-//            if let url = listPokemon?.results[1].url {
-//                api.getPokemons(urlString: url, method: .GET) { returned in
-//                    self.pokemon = returned
-//                    DispatchQueue.main.async {
-//                        print(self.pokemon)
-//                    }
-//                } errorReturned: { error in
-//                    print("Erro de retorno do pokemon")
-//                }
-//            }
     }
 }
 
 extension HomeViewController: UICollectionViewDelegate {
 
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        let details = DetailsViewController()
+        
+        navigationController?.pushViewController(details, animated: true)
+    }
     
 }
 
@@ -111,7 +98,7 @@ extension HomeViewController: UICollectionViewDataSource {
         guard let poks = self.listPokemon.poks else { return cell }
         
         if let pok = poks[indexPath.row] as? Pokemon {
-            cell.labelPokemon.text = pok.name ?? "Pokemon sem nome"
+            cell.labelPokemon.text = pok.name?.capitalized ?? "Pokemon sem nome"
             if let imageURL = pok.sprites?.front_default {
                 if let url = URL(string: imageURL) {
                     cell.imagePokemon.kf.setImage(with: url,
