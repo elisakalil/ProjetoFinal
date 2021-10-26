@@ -55,16 +55,14 @@ class HomeViewController: UIViewController {
         api.getListPokemons(urlString: url, method: .GET) { pokemonReturn in
             self.listPokemon = pokemonReturn
             DispatchQueue.main.async {
-                print("Quantidade de pokemons \(self.listPokemon!.results?.count)")
+                guard let list = self.listPokemon else { return }
+                print("Quantidade de pokemons \(list.results.count)")
                 self.listPokemonCollectionView.reloadData()
             }
         } errorReturned: { error in
             print("\(error)")
         }
-
     }
-
-    
 }
 
 extension HomeViewController: UICollectionViewDelegate {
@@ -75,16 +73,22 @@ extension HomeViewController: UICollectionViewDelegate {
 extension HomeViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 20
+        if let list = self.listPokemon {
+            return list.results.count
+        }else {
+            return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let pokemon = listPokemon!.results[indexPath.row]
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCollectionViewCell.id, for: indexPath) as! PokemonCollectionViewCell
         
-        cell.labelPokemon.text = "Pikachu"
-        
+        cell.labelPokemon.text = pokemon.name?.capitalized
+        print(pokemon)
         return cell
     }
     
     
 }
+

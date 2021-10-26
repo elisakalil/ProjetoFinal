@@ -29,7 +29,6 @@ struct API{
             var statusCode: Int = 0
             if let response = urlResponse as? HTTPURLResponse {
                 statusCode = response.statusCode
-                print(statusCode)
             }
             guard let data = result else { return }
             do {
