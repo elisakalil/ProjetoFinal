@@ -48,6 +48,7 @@ class HomeViewController: UIViewController {
         
         listPokemonCollectionView.register(nib, forCellWithReuseIdentifier: PokemonCollectionViewCell.id)
 
+        
     }
 
     
