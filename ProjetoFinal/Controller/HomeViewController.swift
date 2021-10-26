@@ -72,7 +72,9 @@ extension HomeViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let details = DetailsViewController()
-        
+        guard let poks = self.listPokemon.poks else { return }
+        details.selectedPokemon = poks[indexPath.row]
+    
         navigationController?.pushViewController(details, animated: true)
     }
     
