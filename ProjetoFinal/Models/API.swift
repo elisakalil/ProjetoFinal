@@ -23,7 +23,7 @@ struct API {
         return "\(baseURL)/\(EndPoint.pokemon)/\(id)"
     }
     
-    func getListPokemons(urlString: String, method: HTTPMethod, response: @escaping (Pokemons) -> Void, errorReturned: @escaping (String) -> Void) {
+    func getListPokemons(urlString: String, method: HTTPMethod, success: @escaping (Pokemons) -> Void, failure: @escaping (SGApiError) -> Void) {
         let config: URLSessionConfiguration = .default
         let session: URLSession = URLSession(configuration: config)
         guard let url: URL = URL(string: urlString) else { return }
@@ -41,22 +41,46 @@ struct API {
                 var poks = Pokemons(poks: [])
                 for item in list.results {
                     if let url = item.url {
-                        self.getPokemons(urlString: url, method: .GET, response: { pok in
+                        self.getPokemons(urlString: url, method: .GET) { pok in
                             poks.poks?.append(pok)
-                        }, errorReturned: { erro in
-                            print(erro)
-                        })
+                        } failure: { error in
+                            switch error {
+                            case .emptyArray:
+                                // Mostrar alerta para o usuário de que nao veio nenhum valor da API
+                                //self.showAlertToUser(message: "Não foi possível mostrar os Pokemóns")
+                                print("Não foi possível mostrar os Pokemóns")
+                            case .notFound:
+                                // Mostrar alerta para o usuário dizendo que ele está sem internet ou teve problema na api
+                                //self.showAlertToUser(message: "Sem internet, verifique sua conexão com a Internet")
+                                print("Sem internet, verifique sua conexão com a Internet")
+                            default:
+                                break;
+                            }
+                        }
                     }
                 }
-                response(poks)
+                
+                switch statusCode {
+                case 200:
+                    success(poks)
+                case 404:
+                    failure(SGApiError.notFound)
+                    return
+                case 500:
+                    failure(SGApiError.serverError)
+                    return
+                default:
+                    break
+                }
+                
             } catch {
-                errorReturned("Não retornou os dados da lista de pokemons.")
+                failure(SGApiError.invalidResponse) // Não retornou os dados da lista de pokemons.
             }
         })
         task.resume()
     }
     
-    func getPokemons(urlString: String, method: HTTPMethod, response: @escaping (Pokemon) -> Void, errorReturned: @escaping (String) -> Void) {
+    func getPokemons(urlString: String, method: HTTPMethod, success: @escaping (Pokemon) -> Void, failure: @escaping (SGApiError) -> Void) {
         let config: URLSessionConfiguration = .default
         let session: URLSession = URLSession(configuration: config)
         guard let url: URL = URL(string: urlString) else { return }
@@ -70,9 +94,23 @@ struct API {
             guard let data = result else { return }
             do {
                 let decoder: JSONDecoder = JSONDecoder()
-                response(try decoder.decode(Pokemon.self, from: data))
+                let poke = try decoder.decode(Pokemon.self, from: data)
+                
+                switch statusCode {
+                case 200:
+                    success(poke)
+                case 404:
+                    failure(SGApiError.notFound)
+                    return
+                case 500:
+                    failure(SGApiError.serverError)
+                    return
+                default:
+                    break
+                }
+                
             } catch {
-                errorReturned("Não retornou os dados do pokemon.")
+                failure(SGApiError.invalidResponse) // Não retornou os dados do pokemon.
             }
         })
         task.resume()
