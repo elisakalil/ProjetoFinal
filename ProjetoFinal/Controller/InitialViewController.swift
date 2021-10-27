@@ -9,27 +9,25 @@ import UIKit
 
 class InitialViewController: UIViewController {
     
+    // MARK: Outlets
     @IBOutlet weak var buttonInitial: UIButton!
     
+    // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
     
-    func setupUI (){
-        
-        buttonInitial.layer.cornerRadius = 12
-        navigationController?.navigationBar.tintColor = .black
-            
+    // MARK: Actions
+    @IBAction func handlerInitialButton(_ sender: UIButton) {
+        let viewController = HomeViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
-    
-    @IBAction func handlerInitialButton(_ sender: UIButton) {
-        
-        let viewController = HomeViewController()
-        
-        navigationController?.pushViewController(viewController, animated: true)
+    // MARK: Methods
+    func setupUI (){
+        buttonInitial.layer.cornerRadius = 12
+        navigationController?.navigationBar.tintColor = .black
     }
     
 }

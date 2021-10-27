@@ -4,17 +4,15 @@
 //
 //  Created by Elisa Kalil on 26/10/21.
 
-
 import UIKit
 import Kingfisher
 
 class DetailsViewController: UIViewController {
     
-    ///MARK: Variables
-    
+    // MARK: Properties
     var selectedPokemon: Pokemon? 
     
-   
+    // MARK: Outlets
     @IBOutlet weak var viewBlueBackground: UIView!
     @IBOutlet weak var viewYellowBackground: UIView!
     @IBOutlet weak var buttonFavoritar: UIButton!
@@ -24,23 +22,26 @@ class DetailsViewController: UIViewController {
     @IBOutlet weak var labelDescricao: UILabel!
     @IBOutlet weak var imagePokemon: UIImageView!
     
+    // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let weight = selectedPokemon?.weight else {
-            return}
-        
-        guard let height = selectedPokemon?.height else {
-            return}
+        setupUI()
+    }
 
+    // MARK: Actions
+    @IBAction func buttonFavoritar(_ sender: UIButton) {
+        
+    }
+    
+    // MARK: Methods
+    private func setupUI() {
+        guard let weight = selectedPokemon?.weight else { return }
+        guard let height = selectedPokemon?.height else { return }
         
         self.title = selectedPokemon?.name?.capitalized
-      //  self.labelDescricao.text =
         self.labelNome.text = selectedPokemon?.name?.capitalized
         self.labelPeso.text = "\(Float(weight/100)) kg"
         self.labelAltura.text = "\(height) cm"
-        
-        
         
         if let imageURL = selectedPokemon?.sprites?.front_default {
             if let url = URL(string: imageURL) {
@@ -50,13 +51,7 @@ class DetailsViewController: UIViewController {
             }
         }
         
-        viewBlueBackground.layer.cornerRadius = 100        
-    }
-
-    @IBAction func buttonFavoritar(_ sender: UIButton) {
-        
-        
+        viewBlueBackground.layer.cornerRadius = 100
     }
         
-    }
-  
+}

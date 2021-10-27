@@ -5,7 +5,6 @@
 //  Created by Marilise Morona on 26/10/21.
 //
 
-
 import Foundation
 
 struct ListPokemon: Codable {
@@ -14,4 +13,3 @@ struct ListPokemon: Codable {
     var previous: String?
     var results: [Results]
 }
-
