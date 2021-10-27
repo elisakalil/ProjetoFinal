@@ -59,13 +59,34 @@ class HomeViewController: UIViewController {
     private func requestAPI() {
         let url = api.setListPokemonURL()
         api.getListPokemons(urlString: url, method: .GET) { pokemonReturn in
-            
-            DispatchQueue.main.async {
-                self.listPokemon = pokemonReturn
-                self.listPokemonCollectionView.reloadData()
+                        DispatchQueue.main.async {
+                            self.listPokemon = pokemonReturn
+                            self.listPokemonCollectionView.reloadData()
+                        }
+        } failure: { error in
+            switch error {
+            case .emptyArray:
+                // Mostrar alerta para o usuário informando que nao veio nenhum valor da API
+                self.showAlertToUser(message: "Não foi possível mostrar os Pokemóns")
+            case .notFound:
+                // Mostrar alerta para o usuário informando que ele está sem internet ou teve problema na api
+                self.showAlertToUser(message: "Sem internet")
+            default:
+                break;
             }
-        } errorReturned: { error in
-            print("\(error)")
+        }
+    }
+    
+    private func showAlertToUser(message: String) {
+        let alert = UIAlertController(title: "Atenção", message: message, preferredStyle: .alert)
+        let buttoRedoCall = UIAlertAction(title: "Tentar Novamente", style: .cancel) { _ in
+            self.requestAPI()
+        }
+        let buttonCancel = UIAlertAction(title: "Cancelar", style: .destructive, handler: nil)
+        alert.addAction(buttoRedoCall)
+        alert.addAction(buttonCancel)
+        DispatchQueue.main.async {
+            self.present(alert, animated: true, completion: nil)
         }
     }
     
