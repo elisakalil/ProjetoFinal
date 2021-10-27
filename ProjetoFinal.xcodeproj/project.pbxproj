@@ -78,6 +78,7 @@
 		69F35EAE2721FBDE009F7B8F /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		69F35EB12722085C009F7B8F /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
 		69F35EB22722085C009F7B8F /* PokemonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonCollectionViewCell.xib; sourceTree = "<group>"; };
+		88A9D8842729BE40008893D2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		88F33BCC2721EDB500D8E35C /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		88F33BCD2721EDB500D8E35C /* InitialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InitialViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -150,6 +151,7 @@
 				69250A06271DF72B00B76DA1 /* AppDelegate.swift */,
 				69250A0F271DF72F00B76DA1 /* Assets.xcassets */,
 				69250A14271DF72F00B76DA1 /* Info.plist */,
+				88A9D8842729BE40008893D2 /* README.md */,
 			);
 			path = ProjetoFinal;
 			sourceTree = "<group>";
