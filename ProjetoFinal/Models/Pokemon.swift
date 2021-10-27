@@ -16,7 +16,7 @@ struct Pokemon: Codable {
     var location_area_encounter : String?
     var sprites: Sprites?
     
-    enum CodingKeys: String, CodingKey{
+    enum CodingKeys: String, CodingKey {
         case id
         case name
         case base_experience

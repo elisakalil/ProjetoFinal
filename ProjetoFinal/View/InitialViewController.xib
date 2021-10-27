@@ -22,10 +22,10 @@
                     <rect key="frame" x="20" y="347.66666666666669" width="335" height="117"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WO8-LF-7zH">
-                    <rect key="frame" x="81" y="678" width="213" height="40"/>
+                    <rect key="frame" x="30" y="663" width="315" height="55"/>
                     <color key="backgroundColor" red="0.12941176470588234" green="0.45490196078431372" blue="0.75686274509803919" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="nQF-qm-Cuc"/>
+                        <constraint firstAttribute="height" constant="55" id="nQF-qm-Cuc"/>
                     </constraints>
                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <state key="normal" title="Button"/>
@@ -40,10 +40,12 @@
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" red="0.94509803921568625" green="0.87450980392156863" blue="0.50588235294117645" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="WO8-LF-7zH" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="30" id="3yT-xA-AeZ"/>
                 <constraint firstItem="Bjs-Uy-Ihp" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="7j0-gC-olP"/>
                 <constraint firstItem="WO8-LF-7zH" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="DDA-yV-5Vp"/>
                 <constraint firstItem="Bjs-Uy-Ihp" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="GSh-UZ-BVV"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Bjs-Uy-Ihp" secondAttribute="trailing" constant="20" id="RRE-pi-LXw"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="WO8-LF-7zH" secondAttribute="trailing" constant="30" id="TXH-Eb-kEG"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="WO8-LF-7zH" secondAttribute="bottom" constant="60" id="X76-3O-nch"/>
                 <constraint firstItem="Bjs-Uy-Ihp" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="fQ2-rG-C4V"/>
             </constraints>

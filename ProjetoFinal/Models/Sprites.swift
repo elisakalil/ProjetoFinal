@@ -10,7 +10,7 @@ import Foundation
 struct Sprites: Codable {
     var front_default: String?
     
-    enum CodingKeys: String, CodingKey{
+    enum CodingKeys: String, CodingKey {
         case front_default
     }
 }

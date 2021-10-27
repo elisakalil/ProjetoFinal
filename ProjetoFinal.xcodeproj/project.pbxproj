@@ -111,13 +111,11 @@
 		1699AACC271F9BEE000B061F /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				69B9D792271E4B5F00647B51 /* Colors.swift */,
+				88A9D8832729B270008893D2 /* Enums */,
+				16422EDD27282DE7000D5D9E /* API.swift */,
 				1699AACD271F9C0B000B061F /* Results.swift */,
 				16422ED927282D61000D5D9E /* Pokemon.swift */,
 				16422EDB27282D8E000D5D9E /* ListPokemon.swift */,
-				16422EDD27282DE7000D5D9E /* API.swift */,
-				16422EDF27282EE4000D5D9E /* EndPoint.swift */,
-				16422EE1272830ED000D5D9E /* HTTPMethod.swift */,
 				16422EE327283D54000D5D9E /* Sprites.swift */,
 			);
 			path = Models;
@@ -171,6 +169,16 @@
 				69250A29271DF72F00B76DA1 /* ProjetoFinalUITestsLaunchTests.swift */,
 			);
 			path = ProjetoFinalUITests;
+			sourceTree = "<group>";
+		};
+		88A9D8832729B270008893D2 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				69B9D792271E4B5F00647B51 /* Colors.swift */,
+				16422EDF27282EE4000D5D9E /* EndPoint.swift */,
+				16422EE1272830ED000D5D9E /* HTTPMethod.swift */,
+			);
+			path = Enums;
 			sourceTree = "<group>";
 		};
 		88F33BC92721ED4700D8E35C /* View */ = {
