@@ -9,7 +9,8 @@ import Kingfisher
 class HomeViewController: UIViewController {
 
     // MARK: Properties
-    let api = API()
+    var api: PokemonAPI?
+    //let api = API()
     var listPokemon =  Pokemons(poks: [])
     var pokemon: Pokemon?
     
@@ -38,6 +39,11 @@ class HomeViewController: UIViewController {
             listPokemonCollectionView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             listPokemonCollectionView.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.84)
         ])
+    }
+    
+    convenience init(api: PokemonAPI) {
+        self.init()
+        self.api = api
     }
     
     // MARK: Overrides
@@ -70,6 +76,7 @@ class HomeViewController: UIViewController {
     }
     
     private func requestAPI() {
+        guard let api = self.api else {return}
         let url = api.setListPokemonURL()
         api.getListPokemons(urlString: url, method: .GET) { pokemonReturn in
                         DispatchQueue.main.async {

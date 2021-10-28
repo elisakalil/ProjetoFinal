@@ -20,7 +20,7 @@ class InitialViewController: UIViewController {
     
     // MARK: Actions
     @IBAction func handlerInitialButton(_ sender: UIButton) {
-        let viewController = HomeViewController()
+        let viewController = HomeViewController(api: API())
         navigationController?.pushViewController(viewController, animated: true)
     }
     

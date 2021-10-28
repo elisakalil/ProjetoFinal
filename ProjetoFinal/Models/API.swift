@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct API {
+class API: PokemonAPI {
     
     // MARK: Properties
     let baseURL = "https://pokeapi.co/api/v2"
