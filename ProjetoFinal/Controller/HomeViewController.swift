@@ -49,11 +49,24 @@ class HomeViewController: UIViewController {
     
     // MARK: Methods
     private func setupUI() {
+        createRightBarButton()
         self.view.addSubview(listPokemonCollectionView)
         createConstrains()
         
         let nib = UINib(nibName: PokemonCollectionViewCell.id, bundle: nil)
         listPokemonCollectionView.register(nib, forCellWithReuseIdentifier: PokemonCollectionViewCell.id)
+    }
+    
+    private func createRightBarButton() {
+        let starImage = UIImage(systemName: "star.fill")
+        let rightButton = UIBarButtonItem(image: starImage, style: UIBarButtonItem.Style.plain, target: self, action: #selector(getFavorites))
+        rightButton.tintColor = UIColor(red: 1.00, green: 0.80, blue: 0.14, alpha: 0.55)
+        self.navigationItem.rightBarButtonItem = rightButton
+    }
+    
+    @objc func getFavorites() {
+        let viewController = FavoriteViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     private func requestAPI() {

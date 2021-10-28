@@ -22,8 +22,6 @@
 		69250A28271DF72F00B76DA1 /* ProjetoFinalUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69250A27271DF72F00B76DA1 /* ProjetoFinalUITests.swift */; };
 		69250A2A271DF72F00B76DA1 /* ProjetoFinalUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69250A29271DF72F00B76DA1 /* ProjetoFinalUITestsLaunchTests.swift */; };
 		69B9D793271E4B5F00647B51 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B9D792271E4B5F00647B51 /* Colors.swift */; };
-		69C1EB3627289F4B0055FFDB /* FavoriteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C1EB3427289F4B0055FFDB /* FavoriteTableViewController.swift */; };
-		69C1EB3727289F4B0055FFDB /* FavoriteTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C1EB3527289F4B0055FFDB /* FavoriteTableViewController.xib */; };
 		69D4EED32728773B000A61AF /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D4EED12728773B000A61AF /* DetailsViewController.swift */; };
 		69D4EED42728773B000A61AF /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D4EED22728773B000A61AF /* DetailsViewController.xib */; };
 		69F35EAF2721FBDE009F7B8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F35EAD2721FBDE009F7B8F /* HomeViewController.swift */; };
@@ -31,6 +29,10 @@
 		69F35EB32722085C009F7B8F /* PokemonCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F35EB12722085C009F7B8F /* PokemonCollectionViewCell.swift */; };
 		69F35EB42722085C009F7B8F /* PokemonCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69F35EB22722085C009F7B8F /* PokemonCollectionViewCell.xib */; };
 		885352AC2729E5940063C551 /* SGApiError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885352AB2729E5940063C551 /* SGApiError.swift */; };
+		885352AF2729E9D40063C551 /* FavoriteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 885352AD2729E9D40063C551 /* FavoriteTableViewCell.swift */; };
+		885352B02729E9D40063C551 /* FavoriteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 885352AE2729E9D40063C551 /* FavoriteTableViewCell.xib */; };
+		88CDB65B272ACB7300A55728 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88CDB659272ACB7300A55728 /* FavoriteViewController.swift */; };
+		88CDB65C272ACB7300A55728 /* FavoriteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88CDB65A272ACB7300A55728 /* FavoriteViewController.xib */; };
 		88F33BCE2721EDB500D8E35C /* InitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88F33BCC2721EDB500D8E35C /* InitialViewController.swift */; };
 		88F33BCF2721EDB500D8E35C /* InitialViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 88F33BCD2721EDB500D8E35C /* InitialViewController.xib */; };
 /* End PBXBuildFile section */
@@ -71,8 +73,6 @@
 		69250A27271DF72F00B76DA1 /* ProjetoFinalUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetoFinalUITests.swift; sourceTree = "<group>"; };
 		69250A29271DF72F00B76DA1 /* ProjetoFinalUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProjetoFinalUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		69B9D792271E4B5F00647B51 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
-		69C1EB3427289F4B0055FFDB /* FavoriteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewController.swift; sourceTree = "<group>"; };
-		69C1EB3527289F4B0055FFDB /* FavoriteTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewController.xib; sourceTree = "<group>"; };
 		69D4EED12728773B000A61AF /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		69D4EED22728773B000A61AF /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		69F35EAD2721FBDE009F7B8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -80,7 +80,11 @@
 		69F35EB12722085C009F7B8F /* PokemonCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCollectionViewCell.swift; sourceTree = "<group>"; };
 		69F35EB22722085C009F7B8F /* PokemonCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PokemonCollectionViewCell.xib; sourceTree = "<group>"; };
 		885352AB2729E5940063C551 /* SGApiError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SGApiError.swift; path = ../../../../../SGApiError.swift; sourceTree = "<group>"; };
+		885352AD2729E9D40063C551 /* FavoriteTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteTableViewCell.swift; sourceTree = "<group>"; };
+		885352AE2729E9D40063C551 /* FavoriteTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteTableViewCell.xib; sourceTree = "<group>"; };
 		88A9D8842729BE40008893D2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		88CDB659272ACB7300A55728 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		88CDB65A272ACB7300A55728 /* FavoriteViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FavoriteViewController.xib; sourceTree = "<group>"; };
 		88F33BCC2721EDB500D8E35C /* InitialViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InitialViewController.swift; sourceTree = "<group>"; };
 		88F33BCD2721EDB500D8E35C /* InitialViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InitialViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -194,7 +198,8 @@
 				69F35EAE2721FBDE009F7B8F /* HomeViewController.xib */,
 				69F35EB22722085C009F7B8F /* PokemonCollectionViewCell.xib */,
 				69D4EED22728773B000A61AF /* DetailsViewController.xib */,
-				69C1EB3527289F4B0055FFDB /* FavoriteTableViewController.xib */,
+				885352AE2729E9D40063C551 /* FavoriteTableViewCell.xib */,
+				88CDB65A272ACB7300A55728 /* FavoriteViewController.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -203,10 +208,11 @@
 			isa = PBXGroup;
 			children = (
 				69D4EED12728773B000A61AF /* DetailsViewController.swift */,
-				69C1EB3427289F4B0055FFDB /* FavoriteTableViewController.swift */,
 				88F33BCC2721EDB500D8E35C /* InitialViewController.swift */,
 				69F35EAD2721FBDE009F7B8F /* HomeViewController.swift */,
 				69F35EB12722085C009F7B8F /* PokemonCollectionViewCell.swift */,
+				885352AD2729E9D40063C551 /* FavoriteTableViewCell.swift */,
+				88CDB659272ACB7300A55728 /* FavoriteViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -326,8 +332,9 @@
 				88F33BCF2721EDB500D8E35C /* InitialViewController.xib in Resources */,
 				69F35EB42722085C009F7B8F /* PokemonCollectionViewCell.xib in Resources */,
 				69F35EB02721FBDE009F7B8F /* HomeViewController.xib in Resources */,
-				69C1EB3727289F4B0055FFDB /* FavoriteTableViewController.xib in Resources */,
+				885352B02729E9D40063C551 /* FavoriteTableViewCell.xib in Resources */,
 				69D4EED42728773B000A61AF /* DetailsViewController.xib in Resources */,
+				88CDB65C272ACB7300A55728 /* FavoriteViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,12 +368,13 @@
 				88F33BCE2721EDB500D8E35C /* InitialViewController.swift in Sources */,
 				16422EE427283D54000D5D9E /* Sprites.swift in Sources */,
 				69250A07271DF72B00B76DA1 /* AppDelegate.swift in Sources */,
+				885352AF2729E9D40063C551 /* FavoriteTableViewCell.swift in Sources */,
 				1699AACE271F9C0B000B061F /* Results.swift in Sources */,
 				69F35EB32722085C009F7B8F /* PokemonCollectionViewCell.swift in Sources */,
+				88CDB65B272ACB7300A55728 /* FavoriteViewController.swift in Sources */,
 				16422EDE27282DE7000D5D9E /* API.swift in Sources */,
 				69D4EED32728773B000A61AF /* DetailsViewController.swift in Sources */,
 				69B9D793271E4B5F00647B51 /* Colors.swift in Sources */,
-				69C1EB3627289F4B0055FFDB /* FavoriteTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
