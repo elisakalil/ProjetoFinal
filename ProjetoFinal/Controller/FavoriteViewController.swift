@@ -24,12 +24,26 @@ class FavoriteViewController: UIViewController {
     
     // MARK: Methods
     private func setupUI() {
+        let leftButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(getHomeViewController))
+        self.navigationItem.leftBarButtonItem = leftButton
         
         self.tableViewFavorites.dataSource = self
         self.tableViewFavorites.delegate = self
         
         let nib = UINib(nibName: FavoriteTableViewCell.id, bundle: nil)
         self.tableViewFavorites.register(nib, forCellReuseIdentifier: FavoriteTableViewCell.id)
+    }
+    
+    @objc func getHomeViewController() {
+        if let controllers = self.navigationController?.viewControllers {
+            for i in (0..<controllers.count).reversed()  {
+                if !controllers[i].isKind(of: HomeViewController.self) {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    return
+                }
+            }
+        }
     }
 
 }
