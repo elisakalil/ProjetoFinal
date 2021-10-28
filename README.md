@@ -13,7 +13,7 @@ Projeto final do curso de Swift do programa Maria vai com as Devs realizado pela
 - [x] Mostrar pelo menos uma imagem externa
 - [x] Pelo menos uma lista com scroll (com dados externos)
 - [ ] Persistência de dados
-- [ ] Ter pelo menos um teste unitário (não precisa ser TDD)
+- [x] Ter pelo menos um teste unitário (não precisa ser TDD)
 
 **Dicas:**
 - Testar em vários tamanhos de tela (iPhone)
