@@ -89,6 +89,14 @@ extension FavoriteViewController: UITableViewDelegate {
         
         }
     }
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let details = DetailsViewController()
+        let poke = fav[indexPath.row]
+        let pokemonSelecionado : Pokemon = Pokemon(name: poke.pokename, height: Int(poke.pokealtura), weight: Int(poke.pokepeso))
+        details.selectedPokemon = pokemonSelecionado
+        navigationController?.pushViewController(details, animated: true)
+    }
 }
 
 extension FavoriteViewController: UITableViewDataSource {
