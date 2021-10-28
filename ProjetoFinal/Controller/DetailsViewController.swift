@@ -30,7 +30,8 @@ class DetailsViewController: UIViewController {
 
     // MARK: Actions
     @IBAction func buttonFavoritar(_ sender: UIButton) {
-        
+        let viewController = FavoriteViewController()
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     // MARK: Methods
