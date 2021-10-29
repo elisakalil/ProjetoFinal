@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="19206" systemVersion="20G165" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="Favoritos" representedClassName="Favoritos" syncable="YES" codeGenerationType="class">
-        <attribute name="pokealtura" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pokealtura" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="pokeimage" optional="YES" attributeType="String"/>
         <attribute name="pokename" optional="YES" attributeType="String"/>
-        <attribute name="pokepeso" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="pokepeso" optional="YES" attributeType="Float" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
     <elements>
         <element name="Favoritos" positionX="-63" positionY="-18" width="128" height="89"/>

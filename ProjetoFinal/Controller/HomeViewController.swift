@@ -17,7 +17,7 @@ class HomeViewController: UIViewController {
     
     lazy var listPokemonCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        let heightCell:CGFloat = (self.view.frame.width/2.0-40)
+        let heightCell:CGFloat = (self.view.frame.width*0.8/2.1 - 11)
         layout.itemSize = CGSize(width: heightCell, height: heightCell)
         layout.minimumInteritemSpacing = 10
         layout.minimumLineSpacing = 10
@@ -74,7 +74,16 @@ class HomeViewController: UIViewController {
     @objc func getFavorites() {
         //To do: validar se tem algum dado no core data, se nao tiver apresentar um alerta para o usuario
         //informando que deve primeiro favoritar um pokemon
+        var fav : [Favoritos] = []
+        do {
+            fav = try DataBaseController.persistentContainer.viewContext.fetch(Favoritos.fetchRequest())
+        } catch {
+            print("Não consegui trazer as informações do banco de dados")
+        }
+
+        
         let viewController = FavoriteViewController()
+        viewController.fav = fav
         navigationController?.pushViewController(viewController, animated: true)
     }
     
@@ -85,14 +94,15 @@ class HomeViewController: UIViewController {
         guard let api = self.api else {return}
         let url = api.setListPokemonURL()
         api.getListPokemons(urlString: url, method: .GET) { pokemonReturn in
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                            self.animateView.pause() // pausa a animacao
-                            self.animateView.isHidden = true // esconde da tela
-                            self.animateView.removeFromSuperview() //remove da tela
-                            
+                        DispatchQueue.main.async() {
+                       
                             self.listPokemon = pokemonReturn
+                            
+                            self.animateView.pause() // pausa a animacao
+                            self.animateView.removeFromSuperview() //remove da tela
                             self.listPokemonCollectionView.reloadData()
                         }
+           
 //                        DispatchQueue.main.async {
 //                            self.listPokemon = pokemonReturn
 //                            self.listPokemonCollectionView.reloadData()
@@ -168,7 +178,7 @@ extension HomeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: PokemonCollectionViewCell.id, for: indexPath) as! PokemonCollectionViewCell
         guard let poks = self.listPokemon.poks else { return cell }
         
-        if let pok = poks[indexPath.row] as? Pokemon {
+        let pok = poks[indexPath.row]
             cell.labelPokemon.text = pok.name?.capitalized ?? "Pokemon sem nome"
             if let imageURL = pok.sprites?.front_default {
                 if let url = URL(string: imageURL) {
@@ -178,7 +188,6 @@ extension HomeViewController: UICollectionViewDataSource {
                         completionHandler: { result in })
                 }
             }
-        }
         return cell
     }
     

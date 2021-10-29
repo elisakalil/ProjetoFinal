@@ -39,11 +39,15 @@ class API: PokemonAPI {
                 let decoder: JSONDecoder = JSONDecoder()
                 let list = try decoder.decode(ListPokemon.self, from: data)
                 var poks = Pokemons(poks: [])
+                let dispatchGroup = DispatchGroup()
                 for item in list.results {
                     if let url = item.url {
+                        dispatchGroup.enter()
                         self.getPokemons(urlString: url, method: .GET) { pok in
                             poks.poks?.append(pok)
+                            dispatchGroup.leave()
                         } failure: { error in
+                            dispatchGroup.leave()
                             switch error {
                             case .emptyArray:
                                 // Mostrar alerta para o usuário de que nao veio nenhum valor da API
@@ -57,7 +61,9 @@ class API: PokemonAPI {
                                 break;
                             }
                         }
+                        dispatchGroup.wait()
                     }
+                    
                 }
                 
                 switch statusCode {
