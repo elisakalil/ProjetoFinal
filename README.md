@@ -25,10 +25,14 @@ Projeto final do curso de Swift do programa Maria vai com as Devs realizado pela
 
 Para visualizar o projeto no Figma [clique aqui](https://www.figma.com/file/PdyGNBmOVnV5M2cefsPtDm/Projeto-Final---PokeAPI?node-id=0%3A1). 💻
 
-## ✨  Arquitetura e Tecnologias utilizadas
+## ✨  Arquitetura, Tecnologias e Bibliotecas utilizadas
 
+- Xcode Version 13.0
+- Versão mínima iOS 15.0
+- API: [PokeAPI](https://pokeapi.co/)
 - MVC Architecture
-- Pod Kingfisher
+- Kingfisher (7.1.1)
+- Lottie (3.2.3)
 
 ---
 
