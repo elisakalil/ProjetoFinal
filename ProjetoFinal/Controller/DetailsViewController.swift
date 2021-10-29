@@ -10,7 +10,7 @@ import Kingfisher
 class DetailsViewController: UIViewController {
     
     // MARK: Properties
-    var selectedPokemon: Pokemon? 
+    var selectedPokemon: Pokemon?
     
     // MARK: Outlets
     @IBOutlet weak var viewBlueBackground: UIView!
@@ -30,8 +30,18 @@ class DetailsViewController: UIViewController {
 
     // MARK: Actions
     @IBAction func buttonFavoritar(_ sender: UIButton) {
+        
+        let context = DataBaseController.persistentContainer.viewContext
+        let fav = Favoritos(context: context)
+        fav.pokename = selectedPokemon?.name?.capitalized
+        fav.pokeimage = selectedPokemon?.sprites?.front_default
+        fav.pokealtura = Int16(selectedPokemon?.height ?? 0)
+        fav.pokepeso = Int16(selectedPokemon?.weight ?? 0)
+        DataBaseController.saveContext()
+        
         let viewController = FavoriteViewController()
         navigationController?.pushViewController(viewController, animated: true)
+                                
     }
     
     // MARK: Methods

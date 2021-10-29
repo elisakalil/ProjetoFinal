@@ -4,6 +4,7 @@
 //  Created by Elisa Kalil, Rayana Prata Neves and Marilise Cristine Morona on 18/10/21.
 
 import UIKit
+import CoreData
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,5 +27,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible()
         
     }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+            DataBaseController.saveContext()
+        }
 
 }

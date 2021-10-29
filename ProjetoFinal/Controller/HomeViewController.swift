@@ -71,6 +71,8 @@ class HomeViewController: UIViewController {
     }
     
     @objc func getFavorites() {
+        //To do: validar se tem algum dado no core data, se nao tiver apresentar um alerta para o usuario
+        //informando que deve primeiro favoritar um pokemon
         let viewController = FavoriteViewController()
         navigationController?.pushViewController(viewController, animated: true)
     }
