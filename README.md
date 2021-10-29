@@ -12,7 +12,7 @@ Projeto final do curso de Swift do programa Maria vai com as Devs realizado pela
 - [x] Chamada API para trazer dados
 - [x] Mostrar pelo menos uma imagem externa
 - [x] Pelo menos uma lista com scroll (com dados externos)
-- [ ] Persistência de dados
+- [x] Persistência de dados
 - [x] Ter pelo menos um teste unitário (não precisa ser TDD)
 
 **Dicas:**
