@@ -35,8 +35,8 @@ class DetailsViewController: UIViewController {
         let fav = Favoritos(context: context)
         fav.pokename = selectedPokemon?.name?.capitalized
         fav.pokeimage = selectedPokemon?.sprites?.front_default
-        fav.pokealtura = Int16(selectedPokemon?.height ?? 0)
-        fav.pokepeso = Int16(selectedPokemon?.weight ?? 0)
+        fav.pokealtura = Float(selectedPokemon?.height ?? 0)
+        fav.pokepeso = Float(selectedPokemon?.weight ?? 0)
         DataBaseController.saveContext()
         
         let viewController = FavoriteViewController()
@@ -51,7 +51,8 @@ class DetailsViewController: UIViewController {
         
         self.title = selectedPokemon?.name?.capitalized
         self.labelNome.text = selectedPokemon?.name?.capitalized
-        self.labelPeso.text = "\(Float(weight/100)) kg"
+        self.labelPeso.text = "\(weight) g"
+        //self.labelPeso.text = "\(Float(weight/100)) kg"
         self.labelAltura.text = "\(height) cm"
         
         if let imageURL = selectedPokemon?.sprites?.front_default {

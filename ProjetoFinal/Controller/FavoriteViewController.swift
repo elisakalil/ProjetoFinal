@@ -26,23 +26,23 @@ class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.reloadTableViewPokemon()
+    //    self.reloadTableViewPokemon()
     }
     
     // MARK: Methods
     
-    func reloadTableViewPokemon(){
-        do {
-            self.fav = try DataBaseController.persistentContainer.viewContext.fetch(Favoritos.fetchRequest())
-        } catch {
-            print("Não consegui trazer as informações do banco de dados")
-        }
-        self.tableViewFavorites.reloadData()
-    }
+//    func reloadTableViewPokemon(){
+//        do {
+//            self.fav = try DataBaseController.persistentContainer.viewContext.fetch(Favoritos.fetchRequest())
+//        } catch {
+//            print("Não consegui trazer as informações do banco de dados")
+//        }
+//        self.tableViewFavorites.reloadData()
+//    }
     
     private func setupUI() {
         let leftButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(getHomeViewController))
-        self.navigationItem.backBarButtonItem = leftButton
+        self.navigationItem.leftBarButtonItem = leftButton
         
         self.tableViewFavorites.dataSource = self
         self.tableViewFavorites.delegate = self
@@ -93,7 +93,8 @@ extension FavoriteViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let details = DetailsViewController()
         let poke = fav[indexPath.row]
-        let pokemonSelecionado : Pokemon = Pokemon(name: poke.pokename, height: Int(poke.pokealtura), weight: Int(poke.pokepeso))
+        let pokemonSelecionado : Pokemon = Pokemon(name: poke.pokename, height: Int(poke.pokealtura), weight: Int(poke.pokepeso), sprites: Sprites(front_default: poke.pokeimage))
+        
         details.selectedPokemon = pokemonSelecionado
         navigationController?.pushViewController(details, animated: true)
     }
