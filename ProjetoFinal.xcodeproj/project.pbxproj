@@ -24,7 +24,6 @@
 		6966AE83272AD946006E694E /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6966AE82272AD946006E694E /* IntegrationTests.swift */; };
 		6966AE87272AE0D4006E694E /* PokemonAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6966AE86272AE0D4006E694E /* PokemonAPI.swift */; };
 		6966AE89272AE795006E694E /* PokemonTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6966AE88272AE795006E694E /* PokemonTests.swift */; };
-		69B9D793271E4B5F00647B51 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B9D792271E4B5F00647B51 /* Colors.swift */; };
 		69D4EED32728773B000A61AF /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D4EED12728773B000A61AF /* DetailsViewController.swift */; };
 		69D4EED42728773B000A61AF /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69D4EED22728773B000A61AF /* DetailsViewController.xib */; };
 		69F35EAF2721FBDE009F7B8F /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F35EAD2721FBDE009F7B8F /* HomeViewController.swift */; };
@@ -71,7 +70,6 @@
 		6966AE82272AD946006E694E /* IntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
 		6966AE86272AE0D4006E694E /* PokemonAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonAPI.swift; sourceTree = "<group>"; };
 		6966AE88272AE795006E694E /* PokemonTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonTests.swift; sourceTree = "<group>"; };
-		69B9D792271E4B5F00647B51 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		69D4EED12728773B000A61AF /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		69D4EED22728773B000A61AF /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		69F35EAD2721FBDE009F7B8F /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -177,7 +175,6 @@
 		88A9D8832729B270008893D2 /* Enums */ = {
 			isa = PBXGroup;
 			children = (
-				69B9D792271E4B5F00647B51 /* Colors.swift */,
 				16422EDF27282EE4000D5D9E /* EndPoint.swift */,
 				16422EE1272830ED000D5D9E /* HTTPMethod.swift */,
 				6966AE7C272AD490006E694E /* SGApiError.swift */,
@@ -345,7 +342,6 @@
 				16422EDE27282DE7000D5D9E /* API.swift in Sources */,
 				166B203B272B200500AF8247 /* DataBaseController.swift in Sources */,
 				69D4EED32728773B000A61AF /* DetailsViewController.swift in Sources */,
-				69B9D793271E4B5F00647B51 /* Colors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -74,16 +74,8 @@ class HomeViewController: UIViewController {
     @objc func getFavorites() {
         //To do: validar se tem algum dado no core data, se nao tiver apresentar um alerta para o usuario
         //informando que deve primeiro favoritar um pokemon
-        var fav : [Favoritos] = []
-        do {
-            fav = try DataBaseController.persistentContainer.viewContext.fetch(Favoritos.fetchRequest())
-        } catch {
-            print("Não consegui trazer as informações do banco de dados")
-        }
-
         
         let viewController = FavoriteViewController()
-        viewController.fav = fav
         navigationController?.pushViewController(viewController, animated: true)
     }
     

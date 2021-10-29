@@ -26,22 +26,22 @@ class FavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-    //    self.reloadTableViewPokemon()
+        self.reloadTableViewPokemon()
     }
     
     // MARK: Methods
     
-//    func reloadTableViewPokemon(){
-//        do {
-//            self.fav = try DataBaseController.persistentContainer.viewContext.fetch(Favoritos.fetchRequest())
-//        } catch {
-//            print("Não consegui trazer as informações do banco de dados")
-//        }
-//        self.tableViewFavorites.reloadData()
-//    }
+    func reloadTableViewPokemon(){
+        do {
+            self.fav = try DataBaseController.persistentContainer.viewContext.fetch(Favoritos.fetchRequest())
+        } catch {
+            print("Não consegui trazer as informações do banco de dados")
+        }
+        self.tableViewFavorites.reloadData()
+    }
     
     private func setupUI() {
-        let leftButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(getHomeViewController))
+        let leftButton = UIBarButtonItem(title: "ᐸ  Back", style: .plain, target: self, action: #selector(getHomeViewController))
         self.navigationItem.leftBarButtonItem = leftButton
         
         self.tableViewFavorites.dataSource = self
