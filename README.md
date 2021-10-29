@@ -5,7 +5,7 @@ Projeto final do curso de Swift do programa Maria vai com as Devs realizado pela
 
 ## 📄  Sobre o Projeto
 
-*GIF do projeto!
+![Pokedex App](Assets/app.gif)
 
 ## 📌  Requisitos do Projeto
 
