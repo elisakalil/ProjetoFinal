@@ -9,7 +9,7 @@ import UIKit
 import Kingfisher
 
 class FavoriteViewController: UIViewController {
-
+    
     // MARK: Properties
     var fav: [Favoritos] = []
     
@@ -19,18 +19,15 @@ class FavoriteViewController: UIViewController {
     // MARK: Overrides
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupUI()
     }
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         self.reloadTableViewPokemon()
     }
     
     // MARK: Methods
-    
     func reloadTableViewPokemon(){
         do {
             self.fav = try DataBaseController.persistentContainer.viewContext.fetch(Favoritos.fetchRequest())
@@ -67,34 +64,33 @@ class FavoriteViewController: UIViewController {
 extension FavoriteViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-            return UITableViewCell.EditingStyle.delete
+        return UITableViewCell.EditingStyle.delete
     }
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         let poke = fav[indexPath.row]
-//        context.delete(poke.pokename)
         let context = DataBaseController.persistentContainer.viewContext
-        
-        
         if editingStyle == .delete {
             context.delete(poke)
-            do{
+            do {
                 try context.save()
             } catch {
-                
+                print("Erro ao deletar o pokemon")
             }
-        
             self.fav.remove(at: indexPath.row)
             tableViewFavorites.reloadData()
-        
         }
     }
-
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let details = DetailsViewController()
         let poke = fav[indexPath.row]
-        let pokemonSelecionado : Pokemon = Pokemon(name: poke.pokename, height: Int(poke.pokealtura), weight: Int(poke.pokepeso), sprites: Sprites(front_default: poke.pokeimage))
-        
+        let pokemonSelecionado: Pokemon = Pokemon(
+            name: poke.pokename,
+            height: Int(poke.pokealtura),
+            weight: Int(poke.pokepeso),
+            sprites: Sprites(front_default: poke.pokeimage)
+        )
         details.selectedPokemon = pokemonSelecionado
         navigationController?.pushViewController(details, animated: true)
     }
@@ -108,18 +104,14 @@ extension FavoriteViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: FavoriteTableViewCell.id, for: indexPath) as? FavoriteTableViewCell else { return UITableViewCell() }
-
         let poke = fav[indexPath.row]
-        
         cell.labelFavorite?.text = poke.pokename
-        
         if let imageURL = poke.pokeimage {
             if let url = URL(string: imageURL) {
                 cell.imageTableFavorites.kf.setImage(with: url,
-                                          options: [.cacheOriginalImage],
-                                          completionHandler: { result in })
+                                                     options: [.cacheOriginalImage],
+                                                     completionHandler: { result in })
             }
-        
         }
         return cell
     }

@@ -27,10 +27,9 @@ class DetailsViewController: UIViewController {
         super.viewDidLoad()
         setupUI()
     }
-
+    
     // MARK: Actions
     @IBAction func buttonFavoritar(_ sender: UIButton) {
-        
         let context = DataBaseController.persistentContainer.viewContext
         let fav = Favoritos(context: context)
         fav.pokename = selectedPokemon?.name?.capitalized
@@ -38,32 +37,26 @@ class DetailsViewController: UIViewController {
         fav.pokealtura = Float(selectedPokemon?.height ?? 0)
         fav.pokepeso = Float(selectedPokemon?.weight ?? 0)
         DataBaseController.saveContext()
-        
         let viewController = FavoriteViewController()
         navigationController?.pushViewController(viewController, animated: true)
-                                
     }
     
     // MARK: Methods
     private func setupUI() {
         guard let weight = selectedPokemon?.weight else { return }
         guard let height = selectedPokemon?.height else { return }
-        
         self.title = selectedPokemon?.name?.capitalized
         self.labelNome.text = selectedPokemon?.name?.capitalized
         self.labelPeso.text = "\(weight) g"
-        //self.labelPeso.text = "\(Float(weight/100)) kg"
         self.labelAltura.text = "\(height) cm"
-        
         if let imageURL = selectedPokemon?.sprites?.front_default {
             if let url = URL(string: imageURL) {
                 imagePokemon.kf.setImage(with: url,
-                                          options: [.cacheOriginalImage],
-                                          completionHandler: { result in })
+                                         options: [.cacheOriginalImage],
+                                         completionHandler: { result in })
             }
         }
-        
         viewBlueBackground.layer.cornerRadius = 100
     }
-        
+    
 }

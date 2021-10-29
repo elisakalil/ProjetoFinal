@@ -11,7 +11,7 @@ class API: PokemonAPI {
     
     // MARK: Properties
     let baseURL = "https://pokeapi.co/api/v2"
-
+    
     // MARK: Methods
     /// Returns the URL string to EndPoint list of Pokemons
     func setListPokemonURL() -> String {
@@ -51,11 +51,11 @@ class API: PokemonAPI {
                             switch error {
                             case .emptyArray:
                                 // Mostrar alerta para o usuário de que nao veio nenhum valor da API
-                                //self.showAlertToUser(message: "Não foi possível mostrar os Pokemóns")
+                                // self.showAlertToUser(message: "Não foi possível mostrar os Pokemóns")
                                 print("Não foi possível mostrar os Pokemóns")
                             case .notFound:
                                 // Mostrar alerta para o usuário dizendo que ele está sem internet ou teve problema na api
-                                //self.showAlertToUser(message: "Sem internet, verifique sua conexão com a Internet")
+                                // self.showAlertToUser(message: "Sem internet, verifique sua conexão com a Internet")
                                 print("Sem internet, verifique sua conexão com a Internet")
                             default:
                                 break;
@@ -80,7 +80,7 @@ class API: PokemonAPI {
                 }
                 
             } catch {
-                failure(SGApiError.invalidResponse) // Não retornou os dados da lista de pokemons.
+                failure(SGApiError.invalidResponse)
             }
         })
         task.resume()
@@ -116,7 +116,7 @@ class API: PokemonAPI {
                 }
                 
             } catch {
-                failure(SGApiError.invalidResponse) // Não retornou os dados do pokemon.
+                failure(SGApiError.invalidResponse)
             }
         })
         task.resume()

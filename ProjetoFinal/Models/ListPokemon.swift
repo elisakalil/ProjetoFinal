@@ -8,8 +8,8 @@
 import Foundation
 
 struct ListPokemon: Codable {
-    var count : Int?
-    var next : String?
+    var count: Int?
+    var next: String?
     var previous: String?
     var results: [Results]
 }

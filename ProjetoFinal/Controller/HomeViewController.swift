@@ -8,7 +8,7 @@ import Kingfisher
 import Lottie
 
 class HomeViewController: UIViewController {
-
+    
     // MARK: Properties
     var api: PokemonAPI?
     var animateView = AnimationView(name: "loading")
@@ -20,9 +20,9 @@ class HomeViewController: UIViewController {
         let heightCell:CGFloat = (self.view.frame.width*0.8/2.1 - 11)
         layout.itemSize = CGSize(width: heightCell, height: heightCell)
         layout.minimumInteritemSpacing = 10
-        layout.minimumLineSpacing = 10
+        layout.minimumLineSpacing = 20
         layout.scrollDirection = .vertical
-
+        
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         
         collectionView.delegate = self
@@ -59,7 +59,6 @@ class HomeViewController: UIViewController {
         createRightBarButton()
         self.view.addSubview(listPokemonCollectionView)
         createConstrains()
-        
         let nib = UINib(nibName: PokemonCollectionViewCell.id, bundle: nil)
         listPokemonCollectionView.register(nib, forCellWithReuseIdentifier: PokemonCollectionViewCell.id)
     }
@@ -80,38 +79,26 @@ class HomeViewController: UIViewController {
     }
     
     private func requestAPI() {
-        
         addLoading()
-        
         guard let api = self.api else {return}
         let url = api.setListPokemonURL()
         api.getListPokemons(urlString: url, method: .GET) { pokemonReturn in
-                        DispatchQueue.main.async() {
-                       
-                            self.listPokemon = pokemonReturn
-                            
-                            self.animateView.pause() // pausa a animacao
-                            self.animateView.removeFromSuperview() //remove da tela
-                            self.listPokemonCollectionView.reloadData()
-                        }
-           
-//                        DispatchQueue.main.async {
-//                            self.listPokemon = pokemonReturn
-//                            self.listPokemonCollectionView.reloadData()
-//                        }
+            DispatchQueue.main.async() {
+                self.listPokemon = pokemonReturn
+                self.animateView.pause()
+                self.animateView.removeFromSuperview()
+                self.listPokemonCollectionView.reloadData()
+            }
         } failure: { error in
             switch error {
             case .emptyArray:
-                // Mostrar alerta para o usuário informando que nao veio nenhum valor da API
                 self.showAlertToUser(message: "Não foi possível mostrar os Pokemóns")
             case .notFound:
-                // Mostrar alerta para o usuário informando que ele está sem internet ou teve problema na api
                 self.showAlertToUser(message: "Sem internet")
             default:
                 break;
             }
         }
-        
     }
     
     private func addLoading() {
@@ -142,7 +129,7 @@ class HomeViewController: UIViewController {
 }
 
 extension HomeViewController: UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let details = DetailsViewController()
         guard let poks = self.listPokemon.poks else { return }
@@ -171,15 +158,15 @@ extension HomeViewController: UICollectionViewDataSource {
         guard let poks = self.listPokemon.poks else { return cell }
         
         let pok = poks[indexPath.row]
-            cell.labelPokemon.text = pok.name?.capitalized ?? "Pokemon sem nome"
-            if let imageURL = pok.sprites?.front_default {
-                if let url = URL(string: imageURL) {
-                    cell.imagePokemon.kf.setImage(
-                        with: url,
-                        options: [.cacheOriginalImage],
-                        completionHandler: { result in })
-                }
+        cell.labelPokemon.text = pok.name?.capitalized ?? "Pokemon sem nome"
+        if let imageURL = pok.sprites?.front_default {
+            if let url = URL(string: imageURL) {
+                cell.imagePokemon.kf.setImage(
+                    with: url,
+                    options: [.cacheOriginalImage],
+                    completionHandler: { result in })
             }
+        }
         return cell
     }
     

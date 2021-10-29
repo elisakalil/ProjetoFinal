@@ -8,7 +8,7 @@
 import UIKit
 
 class FavoriteTableViewCell: UITableViewCell {
-
+    
     // MARK: Properties
     static let id: String = "FavoriteTableViewCell"
     
@@ -19,12 +19,10 @@ class FavoriteTableViewCell: UITableViewCell {
     // MARK: Overrides
     override func awakeFromNib() {
         super.awakeFromNib()
-        
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
     }
     
 }

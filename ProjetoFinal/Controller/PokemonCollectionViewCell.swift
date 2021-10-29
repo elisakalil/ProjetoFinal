@@ -9,7 +9,7 @@ class PokemonCollectionViewCell: UICollectionViewCell {
     
     // MARK: Properties
     static let id: String = "PokemonCollectionViewCell"
-
+    
     // MARK: Outlets
     @IBOutlet weak var viewCellPokemon: UIView!
     @IBOutlet weak var imagePokemon: UIImageView!

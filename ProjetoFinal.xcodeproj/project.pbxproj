@@ -160,16 +160,8 @@
 			children = (
 				6966AE82272AD946006E694E /* IntegrationTests.swift */,
 				6966AE88272AE795006E694E /* PokemonTests.swift */,
-				6966AE81272AD8D3006E694E /* Helper */,
 			);
 			path = ProjetoFinalTests;
-			sourceTree = "<group>";
-		};
-		6966AE81272AD8D3006E694E /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		88A9D8832729B270008893D2 /* Enums */ = {

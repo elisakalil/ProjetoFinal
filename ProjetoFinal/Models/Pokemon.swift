@@ -8,10 +8,10 @@
 import Foundation
 
 struct Pokemon: Codable {
-    var id : Int?
-    var name : String?
-    var height : Int?
-    var weight : Int?
+    var id: Int?
+    var name: String?
+    var height: Int?
+    var weight: Int?
     var sprites: Sprites?
     
     enum CodingKeys: String, CodingKey {
