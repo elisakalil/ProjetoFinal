@@ -110,7 +110,6 @@ class HomeViewController: UIViewController {
             }
         }
         
-        
     }
     
     private func addLoading() {
