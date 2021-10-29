@@ -69,6 +69,7 @@ class API: PokemonAPI {
                 switch statusCode {
                 case 200:
                     success(poks)
+                    //failure(SGApiError.notFound)
                 case 404:
                     failure(SGApiError.notFound)
                     return
