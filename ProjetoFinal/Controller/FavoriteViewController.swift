@@ -42,7 +42,7 @@ class FavoriteViewController: UIViewController {
     
     private func setupUI() {
         let leftButton = UIBarButtonItem(title: "Voltar", style: .plain, target: self, action: #selector(getHomeViewController))
-        self.navigationItem.leftBarButtonItem = leftButton
+        self.navigationItem.backBarButtonItem = leftButton
         
         self.tableViewFavorites.dataSource = self
         self.tableViewFavorites.delegate = self

@@ -5,12 +5,13 @@
 
 import UIKit
 import Kingfisher
+import Lottie
 
 class HomeViewController: UIViewController {
 
     // MARK: Properties
     var api: PokemonAPI?
-    //let api = API()
+    var animateView = AnimationView(name: "loading")
     var listPokemon =  Pokemons(poks: [])
     var pokemon: Pokemon?
     
@@ -78,13 +79,24 @@ class HomeViewController: UIViewController {
     }
     
     private func requestAPI() {
+        
+        addLoading()
+        
         guard let api = self.api else {return}
         let url = api.setListPokemonURL()
         api.getListPokemons(urlString: url, method: .GET) { pokemonReturn in
-                        DispatchQueue.main.async {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                            self.animateView.pause() // pausa a animacao
+                            self.animateView.isHidden = true // esconde da tela
+                            self.animateView.removeFromSuperview() //remove da tela
+                            
                             self.listPokemon = pokemonReturn
                             self.listPokemonCollectionView.reloadData()
                         }
+//                        DispatchQueue.main.async {
+//                            self.listPokemon = pokemonReturn
+//                            self.listPokemonCollectionView.reloadData()
+//                        }
         } failure: { error in
             switch error {
             case .emptyArray:
@@ -97,6 +109,19 @@ class HomeViewController: UIViewController {
                 break;
             }
         }
+        
+    }
+    
+    private func addLoading() {
+        self.view.addSubview(animateView)
+        animateView.loopMode = .loop
+        let posX = (UIScreen.main.bounds.width - 240)/2
+        let posY = (UIScreen.main.bounds.height - 120)/2
+        animateView.frame = CGRect(x: posX, y: posY, width: 240, height: 120)
+        
+        animateView.isHidden = false
+        animateView.alpha = 0.8
+        animateView.play()
     }
     
     private func showAlertToUser(message: String) {
